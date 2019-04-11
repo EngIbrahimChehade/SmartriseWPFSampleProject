@@ -1,0 +1,16 @@
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\WPFSampleProject.dll.config
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\WPFSampleProject.dll
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\WPFSampleProject.pdb
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\EntityFramework.dll
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\EntityFramework.SqlServerCompact.dll
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\System.Data.Entity.Repository.dll
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\System.Data.SqlServerCe.dll
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\EntityFramework.xml
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\WPFSampleProject\WPFSampleProject\bin\Debug\EntityFramework.SqlServerCompact.xml
+D:\Projects\WPFSampleProject\WPFSampleProject\obj\Debug\WPFSampleProject.csproj.CoreCompileInputs.cache
+D:\Projects\WPFSampleProject\WPFSampleProject\obj\Debug\WPFSampleProject.csproj.CopyComplete
+D:\Projects\WPFSampleProject\WPFSampleProject\obj\Debug\WPFSampleProject.dll
+D:\Projects\WPFSampleProject\WPFSampleProject\obj\Debug\WPFSampleProject.pdb
+D:\Projects\WPFSampleProject\WPFSampleProject\obj\Debug\WPFSampleProject.csprojAssemblyReference.cache

@@ -1,0 +1,50 @@
+﻿<Window x:Class="WPFSampleProject.UI.Address"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSampleProject.UI"
+        mc:Ignorable="d"
+        Title="Address" WindowState="Maximized">
+    <WrapPanel>
+        <Button x:Name="createAddressBtn" Content="Create address" Click="CreateAddressBtn_Click" Width="200" Margin="20,10,20,0" Padding="5" Background="#FFE2E2E2" FontSize="14" Cursor="Hand"   />
+        <Button x:Name="PersonBtn" Content="Person" Click="PersonBtn_Click" Width="200" Margin="20,10,20,0" Padding="5" Background="#FFE2E2E2" FontSize="14" Cursor="Hand"   />
+        <DockPanel Margin="20,10,20,10">
+            <DataGrid x:Name="addressDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Background="#FFB6B2B2" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Floor" Binding="{Binding Floor}" />
+                <DataGridTextColumn Header="Building" Binding="{Binding Building}" />
+                <DataGridTextColumn Header="Street" Binding="{Binding Street}" />
+                <DataGridTextColumn Header="City" Binding="{Binding City}" />
+                <DataGridTextColumn Header="Region" Binding="{Binding Region}" />
+                <DataGridTextColumn Header="Country" Binding="{Binding Country}" />
+                <DataGridTextColumn Header="Createdby" Binding="{Binding Createdby}" />
+                <DataGridTextColumn Header="Modifiedby" Binding="{Binding Modifiedby}" />
+                <DataGridTextColumn Header="Createdon" Binding="{Binding Createdon}" />
+                    <DataGridTextColumn Header="Modifiedon" Binding="{Binding Modifiedon}" />
+                    <DataGridTemplateColumn Width="210">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Action" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button x:Name="updateBtn" Content="Update" Click="UpdateBtn_Click" Width="90" Padding="5" Margin="5 2" FontSize="12" Cursor="Hand" Background="{x:Null}" />
+                                    <Button x:Name="deleteBtn" Content="Delete" Click="DeleteBtn_Click" Width="90" Padding="5" Margin="5 2" Background="#FFFF3737" FontSize="12" Cursor="Hand" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+    </DockPanel>
+    </WrapPanel>
+</Window>
