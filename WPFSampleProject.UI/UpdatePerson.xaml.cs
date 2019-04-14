@@ -1,13 +1,16 @@
 ﻿namespace WPFSampleProject.UI
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Net;
+    using System.Runtime.Serialization;
     using System.Windows;
-    
+
     public partial class UpdatePerson : Window
     {
         private List<Model.Address> addressesList = new List<Model.Address>();
-        WPFSampleProjectManager manager = new WPFSampleProjectManager();
 
         public int PersonId { get; set; }
 
@@ -22,14 +25,14 @@
         {
             BindingComboBox();
             BindingAddressComboBox();
-            BindForm();            
+            BindForm();
         }
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             if (ValidateInputData())
             {
-                manager.UpdatePerson(new Model.Person()
+                var payload = new Model.Person()
                 {
                     Id = PersonId,
                     Name = txtName.Text,
@@ -42,7 +45,16 @@
                     FirstName = txtFirstName.Text,
                     ModifiedBy = drpPerson?.Text,
                     Addresses = addressesList
-                });
+                };
+                var request = (HttpWebRequest)WebRequest.Create("http://localhost:5423/Person");
+                request.Method = "PUT";
+                request.ContentType = "application/xml";
+                Stream dataStream = request.GetRequestStream();
+                Serialize(dataStream, payload);
+                dataStream.Close();
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                string returnString = response.StatusCode.ToString();
 
                 this.Hide();
             }
@@ -69,30 +81,68 @@
 
         public void BindForm()
         {
-            var person = manager.GetPersonById(PersonId);
+            WebRequest request = WebRequest.Create("http://localhost:5423/Person/" + PersonId);
+            WebResponse response = request.GetResponse();
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                // Open the stream using a StreamReader for easy access.  
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.  
+                string responseData = reader.ReadToEnd();
+                var person = JsonConvert.DeserializeObject<Model.Person>(responseData);
+                txtName.Text = person.Name;
+                txtFirstName.Text = person.FirstName;
+                txtLastName.Text = person.LastName;
+                txtEmail.Text = person.Email;
+                txtPhoneNumber.Text = person.PhoneNumber;
+                txtDateOfBirth.Text = person.DateOfBirth.ToString();
+                drpGender.SelectedValue = person.Gender;
+            }
 
-            txtName.Text = person.Name;
-            txtFirstName.Text = person.FirstName;
-            txtLastName.Text = person.LastName;
-            txtEmail.Text = person.Email;
-            txtPhoneNumber.Text = person.PhoneNumber;
-            txtDateOfBirth.Text = person.DateOfBirth.ToString();
-
-            drpGender.SelectedValue = person.Gender;
-            var addresses = manager.GetAddressCollectionByPersonId(person.Id);
-            listView.ItemsSource = addresses;
-            addressesList = addresses;
+            WebRequest request2 = WebRequest.Create("http://localhost:5423/Address/GetAddressCollectionByPersonId/" + PersonId);
+            WebResponse response2 = request2.GetResponse();
+            using (Stream dataStream = response2.GetResponseStream())
+            {
+                // Open the stream using a StreamReader for easy access.  
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.  
+                string responseData = reader.ReadToEnd();
+                var addresses = JsonConvert.DeserializeObject<List<Model.Address>>(responseData);
+                listView.ItemsSource = addresses;
+                addressesList = addresses;
+            }
         }
 
         private void BindingComboBox()
         {
-            var manager = new WPFSampleProjectManager();
-            drpPerson.ItemsSource = manager.GetPersonCollection();
+            //var manager = new WPFSampleProjectManager();
+            WebRequest request = WebRequest.Create("http://localhost:5423/Person");
+            WebResponse response = request.GetResponse();
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                // Open the stream using a StreamReader for easy access.  
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.  
+                string responseData = reader.ReadToEnd();
+                var personCollection = JsonConvert.DeserializeObject<IEnumerable<Model.Person>>(responseData);
+                drpPerson.ItemsSource = personCollection;
+            }
         }
 
         private void BindingAddressComboBox()
         {
-            drpAddress.ItemsSource = manager.GetAddressCollection();            
+            WebRequest request = WebRequest.Create("http://localhost:5423/Address");
+            WebResponse response = request.GetResponse();
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                // Open the stream using a StreamReader for easy access.  
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.  
+                string responseData = reader.ReadToEnd();
+                var addressCollection = JsonConvert.DeserializeObject<IEnumerable<Model.Address>>(responseData);
+                drpAddress.ItemsSource = addressCollection;
+            }
+            //drpAddress.ItemsSource = manager.GetAddressCollection();            
         }
 
         private void AddAddressBtn_Click(object sender, RoutedEventArgs e)
@@ -101,8 +151,21 @@
                 Convert.ToInt32(drpAddress?.SelectedValue?.ToString()) : -1;
             if (addressId != -1)
             {
-                var address = manager.GetAddressById(addressId);
-                addressesList.Add(address);
+
+                WebRequest request = WebRequest.Create("http://localhost:5423/Address/" + addressId);
+                WebResponse response = request.GetResponse();
+                using (Stream dataStream = response.GetResponseStream())
+                {
+                    // Open the stream using a StreamReader for easy access.  
+                    StreamReader reader = new StreamReader(dataStream);
+                    // Read the content.  
+                    string responseData = reader.ReadToEnd();
+                    var address = JsonConvert.DeserializeObject<Model.Address>(responseData);
+                    addressesList.Add(address);
+                }
+
+                //var address = manager.GetAddressById(addressId);
+                //addressesList.Add(address);
                 this.listView.ItemsSource = null;
                 this.listView.ItemsSource = addressesList;
             }
@@ -115,11 +178,17 @@
 
             var addressSelected = listView?.SelectedItems[0] as Model.Address;
             if (addressSelected != null && addressesList.Contains(addressSelected))
-            {                
+            {
                 this.addressesList.Remove(addressSelected);
                 listView.ItemsSource = null;
                 listView.ItemsSource = addressesList;
             }
+        }
+
+        public void Serialize(Stream output, object input)
+        {
+            var ser = new DataContractSerializer(input.GetType());
+            ser.WriteObject(output, input);
         }
     }
 }

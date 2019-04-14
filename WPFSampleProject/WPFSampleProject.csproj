@@ -60,7 +60,6 @@
     <Compile Include="DataValidation.cs" />
     <Compile Include="Data\WPFSampleProjectDataContext.cs" />
     <Compile Include="Data\WPFSampleProjectInitializer.cs" />
-    <Compile Include="Itest.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

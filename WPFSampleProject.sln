@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFSampleProject", "WPFSamp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFSampleProject.UI", "WPFSampleProject.UI\WPFSampleProject.UI.csproj", "{FE6ED0CE-082A-4EE5-8F41-24C69467824A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFSampleProject.ApiGateway", "WPFSampleProject.ApiGateway\WPFSampleProject.ApiGateway.csproj", "{2401D3CE-597F-4C8D-B182-C62CC52FBAE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FE6ED0CE-082A-4EE5-8F41-24C69467824A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE6ED0CE-082A-4EE5-8F41-24C69467824A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE6ED0CE-082A-4EE5-8F41-24C69467824A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2401D3CE-597F-4C8D-B182-C62CC52FBAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2401D3CE-597F-4C8D-B182-C62CC52FBAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2401D3CE-597F-4C8D-B182-C62CC52FBAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2401D3CE-597F-4C8D-B182-C62CC52FBAE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

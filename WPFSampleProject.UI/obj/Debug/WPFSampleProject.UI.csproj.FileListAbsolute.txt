@@ -1,4 +1,3 @@
-D:\Projects\WPFSampleProject\WPFSampleProject.UI\obj\Debug\WPFSampleProject.UI.csprojAssemblyReference.cache
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\obj\Debug\Address.g.cs
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\obj\Debug\App.g.cs
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\obj\Debug\CreateAddress.g.cs
@@ -13,9 +12,6 @@ D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\WPFSampleProject.UI.e
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\WPFSampleProject.UI.pdb
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\EntityFramework.dll
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\EntityFramework.SqlServer.dll
-D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\WPFSampleProject.dll
-D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\WPFSampleProject.pdb
-D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\WPFSampleProject.dll.config
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\EntityFramework.xml
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\EntityFramework.SqlServer.xml
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\obj\Debug\Address.baml
@@ -37,3 +33,7 @@ D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\Unity.Container.dll
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\Unity.Abstractions.pdb
 D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\Unity.Container.pdb
+D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\Newtonsoft.Json.pdb
+D:\Projects\WPFSampleProject\WPFSampleProject.UI\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\WPFSampleProject\WPFSampleProject.UI\obj\Debug\WPFSampleProject.UI.csprojAssemblyReference.cache
